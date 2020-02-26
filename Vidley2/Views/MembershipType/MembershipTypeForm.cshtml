@@ -1,0 +1,41 @@
+﻿
+@model Vidley2.ViewModels.MembershipTypeFormViewModel
+@{
+    ViewBag.Title = "New Membership";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Membershiptype.Id > 0)
+{
+    <h2>Edit Membership type</h2>
+}
+else
+{
+    <h2>New Membership Type</h2>
+}
+@using (Html.BeginForm("Save", "MembershipType"))
+{
+    @Html.HiddenFor(m => m.Membershiptype.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Membershiptype.Type)
+        @Html.TextBoxFor(m => m.Membershiptype.Type, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Membershiptype.SignUpFee)
+        @Html.TextBoxFor(m => m.Membershiptype.SignUpFee, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Membershiptype.DurationInMonths)
+        @Html.TextBoxFor(m => m.Membershiptype.DurationInMonths, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Membershiptype.DiscountRate)
+        @Html.TextBoxFor(m => m.Membershiptype.DiscountRate, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

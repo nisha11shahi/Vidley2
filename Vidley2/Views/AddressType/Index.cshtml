@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<Vidley2.Models.AddressType>
+@{
+    ViewBag.Title = "Address Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Address Types</h2>
+
+@if (Model.Count() < 0)
+{
+    <p>There are no address types in the database.</p>
+}
+else
+{
+    @Html.ActionLink("Add new Address Type", "AddressTypeForm")
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Address Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var addressType in Model)
+            {
+                <tr>
+                    <td>@addressType.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+}
+
+
+
+
+
+

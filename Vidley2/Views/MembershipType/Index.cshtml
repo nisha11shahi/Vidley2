@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Vidley2.Models.MembershipType>
+
+@{
+    ViewBag.Title = "Membership Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Memebership Types</h2>
+
+@if (Model.Count() < 0)
+{
+    <p>There are no membership types in the database.</p>
+}
+else
+{
+    @Html.ActionLink("Add new Memebership Types", "MembershipTypeForm")
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Membership Type</th>
+                <th>Fee</th>
+                <th>Duration in Months</th>
+                <th>Discount Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var membershipType in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(membershipType.Type, "Edit", "Membership Type", new { id = membershipType.Id }, null)</td>
+                    <td>@membershipType.SignUpFee</td>
+                    <td>@membershipType.DurationInMonths</td>
+                    <td>@membershipType.DiscountRate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+}
+
+
+
+
+

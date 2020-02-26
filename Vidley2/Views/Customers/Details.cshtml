@@ -1,0 +1,45 @@
+﻿@model Vidley2.Models.Customer
+
+@{
+    ViewBag.Title = Model.Name + "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Customer Detail</h1>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-6"><p>Name: @Model.Name</p></div>
+    <div class="col-lg-6"><p>Phone Number: @Model.PhoneNumber</p></div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6"><p>Birthdate: @Model.Birthdate</p></div>
+    <div class="col-lg-6"><p>Membership Type: @Model.MembershipType.Type</p></div>
+</div>
+
+<div class="row label-padding">
+    <div class="col-lg-12">
+        <p>Addresses</p>
+        <p>@Model.StreetAddress</p>
+    </div>
+    <div class="col-lg-12">
+        <button type="button" class="btn btn-primary">Add new address</button>
+    </div>
+</div>
+
+<div class="row label-padding">
+    <div class="col-lg-12">
+        <p>Phone Numbers</p>
+    </div>
+    <div class="col-lg-4"> <p>Phone Number Type: @Model.PhoneNumberType.Type</p></div>
+    <div class="col-lg-4"><p>Phone Number: @Model.PhoneNumber</p></div>
+    <div class="col-lg-4"><button type="button" class="btn btn-success">Edit</button> <button type="button" class="btn btn-danger">Delete</button></div>
+    <div class="col-lg-12">
+        <button type="button" class="btn btn-primary">Add new Phone</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+﻿
+@model Vidley2.ViewModels.PhoneNumberTypeFormViewModel
+@{
+    ViewBag.Title = "Phone Type Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.PhoneNumberType.Id > 0)
+{
+    <h2>Edit Phone Number type</h2>
+}
+else
+{
+    <h3>New Phone Number Type</h3>
+}
+@using (Html.BeginForm("Save", "PhoneNumberType"))
+{
+    @Html.HiddenFor(m => m.PhoneNumberType.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumberType.Type)
+        @Html.TextBoxFor(m => m.PhoneNumberType.Type, new { @class = "form-control" })
+    </div>
+
+
+    <button type="submit" class="btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

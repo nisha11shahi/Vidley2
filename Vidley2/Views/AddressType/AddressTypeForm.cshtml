@@ -1,0 +1,30 @@
+﻿
+@model Vidley2.ViewModels.AddressTypeFormViewModel
+@{
+    ViewBag.Title = "Address Type Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.AddressType.Id > 0)
+{
+    <h2>Edit Address type</h2>
+}
+else
+{
+    <h3>New Address Type</h3>
+}
+@using (Html.BeginForm("Save", "AddressType"))
+{
+    @Html.HiddenFor(m => m.AddressType.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.AddressType.Type)
+        @Html.TextBoxFor(m => m.AddressType.Type, new { @class = "form-control" })
+    </div>
+
+    
+    <button type="submit" class="btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

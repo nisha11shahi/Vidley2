@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<Vidley2.Models.PhoneNumberType>
+@{
+    ViewBag.Title = "Phone Number Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Phone Number Types</h2>
+
+@if (Model.Count() < 0)
+{
+    <p>There are no phone number types in the database.</p>
+}
+else
+{
+    @Html.ActionLink("Add New Phone Number Type", "PhoneNumberTypeForm")
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Phone Number Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var phoneNumberType in Model)
+            {
+                <tr>
+                    <td>@phoneNumberType.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+}
+
+
+
+
+
+
