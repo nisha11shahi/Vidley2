@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Vidley2.Models.Staff>
+@{
+    ViewBag.Title = "Staff List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>STAFF</h2>
+
+<div class=" btn btn-default" >
+    @Html.ActionLink("Add new Staff", "StaffForm")
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> Name</th>
+            <th> Email</th>
+            <th> Action</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var staff in Model)
+        {
+        <tr>
+            <td> @Html.ActionLink(staff.FirstName, "Details", "Staff", new { id = staff.Id }, null)</td>
+            <td> @staff.Email </td>
+            <td> <a href='@Url.Action("Edit", "Staff", new { id = staff.Id }, null)' class="btn btn-success"> Edit  </a>       <a href='@Url.Action("Delete", "Staff", new { id = staff.Id }, null)' class="btn btn-danger"> Delete  </a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+

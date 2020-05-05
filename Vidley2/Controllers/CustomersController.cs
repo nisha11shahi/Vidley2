@@ -9,6 +9,7 @@ using Vidley2.ViewModels;
 
 namespace Vidley2.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
@@ -25,7 +26,7 @@ namespace Vidley2.Controllers
         
         // GET: Customer
         public ViewResult Index()
-        {
+         {
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
@@ -74,6 +75,7 @@ namespace Vidley2.Controllers
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.PhoneNumberTypeId = customer.PhoneNumberTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+                customerInDb.CustomerSignature = customer.CustomerSignature;
             }
 
            // _context.Customers.Add(customer);
@@ -84,7 +86,9 @@ namespace Vidley2.Controllers
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c=>c.MembershipType)
-                .Include(c=>c.PhoneNumberType)
+                .Include(c=>c.CustomerPhoneNumbers.Select(x => x.PhoneNumberType))
+                .Include(c => c.CustomerAddresses.Select(x => x.AddressType))
+                .Include(c => c.CustomerMovieRentals.Select(x => x.Movies))
                 .SingleOrDefault(c => c.Id == id);
             if (customer == null)
                 return HttpNotFound();

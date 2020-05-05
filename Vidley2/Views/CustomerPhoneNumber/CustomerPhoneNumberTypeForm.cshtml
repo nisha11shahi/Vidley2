@@ -1,0 +1,28 @@
+﻿@model Vidley2.ViewModels.CustomerPhoneNumberFormViewModel
+@{
+    ViewBag.Title = "Customer Phone Number Type Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Phone Number to Customer</h2>
+
+@using (Html.BeginForm("Save", "CustomerPhoneNumber"))
+{
+    @Html.HiddenFor(m => m.CustomerPhoneNumber.Id)
+    @Html.HiddenFor(m => m.CustomerPhoneNumber.CustomerId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerPhoneNumber.PhoneNumberTypeId)
+        @Html.DropDownListFor(m => m.CustomerPhoneNumber.PhoneNumberTypeId, new SelectList(Model.PhoneNumberTypes, "Id", "Type"), "Select Phone Number Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CustomerPhoneNumber.PhoneNumberTypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerPhoneNumber.PhoneNumber)
+        @Html.TextBoxFor(m => m.CustomerPhoneNumber.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerPhoneNumber.PhoneExtension)
+        @Html.TextBoxFor(m => m.CustomerPhoneNumber.PhoneExtension, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Save</button>
+}

@@ -1,0 +1,31 @@
+﻿@model Vidley2.ViewModels.StaffPhoneNumberFormViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Are you sure you want to delete?</h2>
+@using (Html.BeginForm("DeleteConfirm", "StaffPhoneNumber"))
+{
+    @Html.HiddenFor(m => m.StaffPhoneNumberId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneNumberTypeId)
+        <p>@Model.StaffPhoneNumber.PhoneNumberType.Type</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneNumber)
+        <p>@Model.StaffPhoneNumber.PhoneNumber</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneExtension)
+        <p>@Model.StaffPhoneNumber.PhoneExtension</p>
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Delete</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

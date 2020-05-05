@@ -16,5 +16,6 @@ namespace Vidley2.Models
         public DateTime ReleaseDate { get; set; }
 
         public int Stock { get; set; }
+        public ICollection<CustomerMovieRental> CustomerMovieRentals { get; set; }
     }
 }

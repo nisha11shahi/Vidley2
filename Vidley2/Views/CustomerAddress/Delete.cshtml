@@ -1,0 +1,44 @@
+﻿@model Vidley2.ViewModels.CustomerAddressViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Are you sure you want to delete?</h2>
+@using (Html.BeginForm("DeleteConfirm", "CustomerAddress"))
+{
+    @Html.HiddenFor(m => m.CustomerAddress.Id)
+    @Html.HiddenFor(m => m.CustomerAddress.CustomerId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.AddressTypeId)
+        <p>@Model.CustomerAddress.AddressType.Type</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.StreetAddress)
+        <p>@Model.CustomerAddress.StreetAddress </p>
+</div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.Address2)
+        <p>@Model.CustomerAddress.Address2 </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.City)
+        <p>@Model.CustomerAddress.City </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.State)
+        <p>@Model.CustomerAddress.State </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerAddress.ZipCode)
+        <p>@Model.CustomerAddress.ZipCode </p>
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-danger">Delete</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

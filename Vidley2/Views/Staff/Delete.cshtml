@@ -1,0 +1,71 @@
+﻿@model Vidley2.ViewModels.StaffFormViewModel
+
+@{
+    ViewBag.Title = "StaffDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Are you sure you want to delete?</h2>
+@using (Html.BeginForm("DeleteConfirm", "Staff"))
+{
+    @Html.HiddenFor(m => m.Staff.Id)
+    @Html.HiddenFor(m => m.StaffId)
+  <div class="row">
+    <div class="form-group col-lg-4">
+        @Html.LabelFor(m => m.Staff.FirstName, "First Name")
+        <p>@Model.Staff.FirstName</p>
+    </div>
+    <div class="form-group col-lg-4">
+        @Html.LabelFor(m => m.Staff.MiddleName, "Middle Name")
+        <p>@Model.Staff.MiddleName</p>
+    </div>
+    <div class="form-group col-lg-4">
+        @Html.LabelFor(m => m.Staff.LastName, "Last Name")
+        <p>@Model.Staff.LastName</p>
+    </div>
+</div>
+
+  <div class="row">
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.Email)
+          <p>@Model.Staff.Email</p>
+      </div>
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.HireDate, "Hire Date")
+          <p>@Model.Staff.HireDate</p>
+      </div>
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.TerminationDate, "Termination Date")
+          <p>@Model.Staff.TerminationDate</p>
+      </div>
+</div>
+ <div class="row">
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.EmergencyContactName, "Emergency Contact Name")
+          <p>@Model.Staff.EmergencyContactName</p>
+      </div>
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.EmergencyContactAddress, "Emergency Contact Address")
+          <p>@Model.Staff.EmergencyContactAddress</p>
+      </div>
+      <div class="form-group col-lg-4">
+          @Html.LabelFor(m => m.Staff.EmergencyContactPhone, "Emergency Contact Phone")
+          <p>@Model.Staff.EmergencyContactPhone</p>
+      </div>
+</div>
+
+ <div class="row">
+     <div class="form-group col-lg-4">
+         @Html.LabelFor(m => m.Staff.EmergencyContactRelationship, "Emergency Contact Relationship")
+         <p>@Model.Staff.EmergencyContactRelationship</p>
+     </div>
+</div>
+     @Html.HiddenFor(m => m.Staff.Id)
+     @Html.AntiForgeryToken()
+     <button type="submit" class="btn-danger">Delete</button>
+     }
+
+     @section scripts
+{
+         @Scripts.Render("~/bundles/jqueryval")
+     }

@@ -1,0 +1,31 @@
+﻿@model Vidley2.ViewModels.CustomerMovieRentalViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Are you sure you want to Delete?</h2>
+
+
+@using (Html.BeginForm("DeleteConfirm", "CustomerMovieRental"))
+{
+    @Html.HiddenFor(m => m.CustomerMovieRental.Id)
+    @Html.HiddenFor(m=>m.CustomerMovieRentalId)
+    @Html.HiddenFor(m => m.CustomerMovieRental.CustomerId)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Movies)
+        <p>@Model.CustomerMovieRental.Movies.Name</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Checkin)
+        <p>@Model.CustomerMovieRental.Checkin</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Checkout)
+        <p>@Model.CustomerMovieRental.Checkin</p>
+
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-danger">Delete</button>
+}

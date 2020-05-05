@@ -32,3 +32,33 @@ textarea {
 .label-padding {
     padding-top:30px;
 }
+.form-response {
+    text-decoration: underline;
+    font-weight: bold;
+}
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+}
+
+.row-separator
+{
+    border-bottom:1px solid;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+
+.button-area{
+    padding-top:20px;
+}
+.signature-pad > canvas {
+    display: block;
+    width: 300px;
+    height: 150px;
+    margin-bottom: 5px;
+}

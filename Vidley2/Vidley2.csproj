@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Vidley2</RootNamespace>
     <AssemblyName>Vidley2</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,11 +61,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -170,6 +167,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressTypeController.cs" />
+    <Compile Include="Controllers\CustomerAddressController.cs" />
+    <Compile Include="Controllers\CustomerMovieRentalController.cs" />
+    <Compile Include="Controllers\CustomerPhoneNumberController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\CustomerTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -177,6 +177,9 @@
     <Compile Include="Controllers\MembershipTypeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\PhoneNumberTypeController.cs" />
+    <Compile Include="Controllers\StaffAddressController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\StaffPhoneNumberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,9 +251,56 @@
     <Compile Include="Migrations\202002252226100_UpdatedCustomerModelToHaveIntMembershipTypeId.designer.cs">
       <DependentUpon>202002252226100_UpdatedCustomerModelToHaveIntMembershipTypeId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002261629502_AddCustomerPhoneNumberAndCustomerAddressToModel.cs" />
+    <Compile Include="Migrations\202002261629502_AddCustomerPhoneNumberAndCustomerAddressToModel.designer.cs">
+      <DependentUpon>202002261629502_AddCustomerPhoneNumberAndCustomerAddressToModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261632185_AddCustomerPhoneNumberAndCustomerAddressToModelpart2.cs" />
+    <Compile Include="Migrations\202002261632185_AddCustomerPhoneNumberAndCustomerAddressToModelpart2.designer.cs">
+      <DependentUpon>202002261632185_AddCustomerPhoneNumberAndCustomerAddressToModelpart2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002262337096_AddCustomerMovieRentalToModels.cs" />
+    <Compile Include="Migrations\202002262337096_AddCustomerMovieRentalToModels.designer.cs">
+      <DependentUpon>202002262337096_AddCustomerMovieRentalToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002271745196_AddingNullToCheckout.cs" />
+    <Compile Include="Migrations\202002271745196_AddingNullToCheckout.designer.cs">
+      <DependentUpon>202002271745196_AddingNullToCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002271818034_AddStaffToModels.cs" />
+    <Compile Include="Migrations\202002271818034_AddStaffToModels.designer.cs">
+      <DependentUpon>202002271818034_AddStaffToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002271819119_AddStaffToModelsagain.cs" />
+    <Compile Include="Migrations\202002271819119_AddStaffToModelsagain.designer.cs">
+      <DependentUpon>202002271819119_AddStaffToModelsagain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002272300197_AddCustomerPhoneNumberandCustomerAddressToStaffModel.cs" />
+    <Compile Include="Migrations\202002272300197_AddCustomerPhoneNumberandCustomerAddressToStaffModel.designer.cs">
+      <DependentUpon>202002272300197_AddCustomerPhoneNumberandCustomerAddressToStaffModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002272315449_AddStaffAddressandStaffPhoneNumberToModels.cs" />
+    <Compile Include="Migrations\202002272315449_AddStaffAddressandStaffPhoneNumberToModels.designer.cs">
+      <DependentUpon>202002272315449_AddStaffAddressandStaffPhoneNumberToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002281707452_RemovingAddressandPhoneFromStaffModel.cs" />
+    <Compile Include="Migrations\202002281707452_RemovingAddressandPhoneFromStaffModel.designer.cs">
+      <DependentUpon>202002281707452_RemovingAddressandPhoneFromStaffModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004281838307_addSignatureToCustomer.cs" />
+    <Compile Include="Migrations\202004281838307_addSignatureToCustomer.designer.cs">
+      <DependentUpon>202004281838307_addSignatureToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004281853326_addCustomerSignatureToCustomermodel.cs" />
+    <Compile Include="Migrations\202004281853326_addCustomerSignatureToCustomermodel.designer.cs">
+      <DependentUpon>202004281853326_addCustomerSignatureToCustomermodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressType.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
+    <Compile Include="Models\CustomerMovieRental.cs" />
+    <Compile Include="Models\CustomerPhoneNumber.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -259,16 +309,30 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\PhoneNumberType.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\StaffAddress.cs" />
+    <Compile Include="Models\StaffPhoneNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddressTypeFormViewModel.cs" />
+    <Compile Include="ViewModels\CustomerDetailViewModel.cs" />
+    <Compile Include="ViewModels\StaffPhoneNumberFormViewModel .cs" />
+    <Compile Include="ViewModels\StaffAddressViewModel.cs" />
+    <Compile Include="ViewModels\CustomerAddressViewModel.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\CustomerMovieRentalViewModel.cs" />
+    <Compile Include="ViewModels\CustomerPhoneNumberFormViewModel.cs" />
     <Compile Include="ViewModels\CustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\MembershipTypeFormViewModel.cs" />
     <Compile Include="ViewModels\PhoneNumberTypeFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
+    <Compile Include="ViewModels\StaffFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Vidley2.mdf" />
+    <Content Include="App_Data\aspnet-Vidley2_log.ldf">
+      <DependentUpon>aspnet-Vidley2.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -290,6 +354,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\SignaturePadInit.js" />
+    <Content Include="Scripts\signature_pad.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -342,9 +408,26 @@
     <Content Include="Views\AddressType\Index.cshtml" />
     <Content Include="Views\PhoneNumberType\Index.cshtml" />
     <Content Include="Views\PhoneNumberType\PhoneNumberTypeForm.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\CustomerPhoneNumber\Index.cshtml" />
+    <Content Include="Views\CustomerPhoneNumber\CustomerPhoneNumberTypeForm.cshtml" />
+    <Content Include="Views\CustomerPhoneNumber\Delete.cshtml" />
+    <Content Include="Views\CustomerAddress\CustomerAddressForm.cshtml" />
+    <Content Include="Views\CustomerAddress\Delete.cshtml" />
+    <Content Include="Views\CustomerMovieRental\Index.cshtml" />
+    <Content Include="Views\CustomerMovieRental\CustomerMovieRentalForm.cshtml" />
+    <Content Include="Views\CustomerMovieRental\Delete.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\StaffForm.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
+    <Content Include="Views\StaffAddress\StaffAddressForm.cshtml" />
+    <Content Include="Views\StaffAddress\Delete.cshtml" />
+    <Content Include="Views\StaffPhoneNumber\StaffPhoneNumberForm.cshtml" />
+    <Content Include="Views\StaffPhoneNumber\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\CustomerMovie\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -410,6 +493,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002252226100_UpdatedCustomerModelToHaveIntMembershipTypeId.resx">
       <DependentUpon>202002252226100_UpdatedCustomerModelToHaveIntMembershipTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261629502_AddCustomerPhoneNumberAndCustomerAddressToModel.resx">
+      <DependentUpon>202002261629502_AddCustomerPhoneNumberAndCustomerAddressToModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261632185_AddCustomerPhoneNumberAndCustomerAddressToModelpart2.resx">
+      <DependentUpon>202002261632185_AddCustomerPhoneNumberAndCustomerAddressToModelpart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002262337096_AddCustomerMovieRentalToModels.resx">
+      <DependentUpon>202002262337096_AddCustomerMovieRentalToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271745196_AddingNullToCheckout.resx">
+      <DependentUpon>202002271745196_AddingNullToCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271818034_AddStaffToModels.resx">
+      <DependentUpon>202002271818034_AddStaffToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271819119_AddStaffToModelsagain.resx">
+      <DependentUpon>202002271819119_AddStaffToModelsagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002272300197_AddCustomerPhoneNumberandCustomerAddressToStaffModel.resx">
+      <DependentUpon>202002272300197_AddCustomerPhoneNumberandCustomerAddressToStaffModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002272315449_AddStaffAddressandStaffPhoneNumberToModels.resx">
+      <DependentUpon>202002272315449_AddStaffAddressandStaffPhoneNumberToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002281707452_RemovingAddressandPhoneFromStaffModel.resx">
+      <DependentUpon>202002281707452_RemovingAddressandPhoneFromStaffModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281838307_addSignatureToCustomer.resx">
+      <DependentUpon>202004281838307_addSignatureToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281853326_addCustomerSignatureToCustomermodel.resx">
+      <DependentUpon>202004281853326_addCustomerSignatureToCustomermodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

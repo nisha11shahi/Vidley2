@@ -1,0 +1,40 @@
+﻿@model Vidley2.ViewModels.StaffAddressViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Are you sure you want to delete?</h2>
+@using (Html.BeginForm("DeleteConfirm", "StaffAddress"))
+{
+    @Html.HiddenFor(m => m.StaffAddressId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.AddressTypeId)
+        <p>@Model.StaffAddress.AddressType.Type</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.StreetAddress)
+        <p>@Model.StaffAddress.StreetAddress </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.Address2)
+        <p>@Model.StaffAddress.Address2 </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.City)
+        <p>@Model.StaffAddress.City </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.State)
+        <p>@Model.StaffAddress.State </p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.ZipCode)
+        <p>@Model.StaffAddress.ZipCode </p>
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-danger">Delete</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,66 @@
+﻿@model Vidley2.Models.Staff
+@{
+    ViewBag.Title = "StaffDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron">
+    <h1>Staff Details</h1>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 ">Name: <span class="form-response">@Model.FirstName @Model.MiddleName @Model.LastName</span></div>
+    <div class="col-lg-6 "><p>Phone Number:  <span class="form-response">@Model.PhoneNumber</span></p></div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6"><p>Hire Date: <span class="form-response">@Model.HireDate </span></p></div>
+    <div class="col-lg-6"><p>Termination Date: <span class="form-response">@Model.TerminationDate</span></p></div>
+</div>
+
+<div class="label-padding">
+    <div>
+        <p class=" form-response">Addresses</p>
+    </div>
+
+    @foreach (var staffAddress in Model.StaffAddresses)
+    {
+        <div class="row row-separator">
+            <div class="col-lg-4"> <p>Address Type: @staffAddress.AddressType.Type</p></div>
+            <div class="col-lg-4">
+                <p>
+                    Address: @staffAddress.StreetAddress ,
+                    @staffAddress.Address2 , <br />
+                    @staffAddress.City ,
+                    @staffAddress.State ,
+                    @staffAddress.ZipCode
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <a href='@Url.Action("Edit", "StaffAddress", new { id = staffAddress.Id }, null)' class="btn btn-success"> Edit  </a> <a href='@Url.Action("Delete", "StaffAddress", new { id = staffAddress.Id }, null)' class="btn btn-danger"> Delete  </a>
+            </div>
+        </div>
+    }
+    <div class="button-area">
+        @Html.ActionLink("Add new Address", "StaffAddressForm", "StaffAddress", new { staffId = @Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class=" label-padding">
+    <div>
+        <p class=" form-response">Phone Numbers</p>
+    </div>
+    @foreach (var phoneNumber in Model.StaffPhoneNumbers)
+    {
+        <div class="row row-separator">
+            <div class="col-lg-4"> <p>Phone Number Type: @phoneNumber.PhoneNumberType.Type</p></div>
+            <div class="col-lg-4"><p>Phone Number: @phoneNumber.PhoneNumber</p></div>
+            <div class="col-lg-4">
+                <a href='@Url.Action("Edit", "StaffPhoneNumber", new { id = phoneNumber.Id }, null)' class="btn btn-success"> Edit  </a> <a href='@Url.Action("Delete", "StaffPhoneNumber", new { id = phoneNumber.Id }, null)' class="btn btn-danger"> Delete  </a>
+            </div>
+        </div>
+    }
+    <div class="button-area">
+        @Html.ActionLink("Add new Phone", "StaffPhoneNumberForm", "StaffPhoneNumber", new { staffId = @Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>

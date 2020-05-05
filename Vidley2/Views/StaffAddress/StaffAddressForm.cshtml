@@ -1,0 +1,41 @@
+﻿@model Vidley2.ViewModels.StaffAddressViewModel
+@{
+    ViewBag.Title = "StaffAddressForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Address to Staff</h2>
+
+@using (Html.BeginForm("Save", "StaffAddress"))
+{
+    @Html.HiddenFor(m => m.StaffAddress.Id)
+    @Html.HiddenFor(m => m.StaffAddress.StaffId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.AddressTypeId)
+        @Html.DropDownListFor(m => m.StaffAddress.AddressTypeId, new SelectList(Model.AddressTypes, "Id", "Type"), "Select Address Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StaffAddress.AddressTypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.StreetAddress)
+        @Html.TextBoxFor(m => m.StaffAddress.StreetAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.Address2)
+        @Html.TextBoxFor(m => m.StaffAddress.Address2, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.City)
+        @Html.TextBoxFor(m => m.StaffAddress.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.State)
+        @Html.TextBoxFor(m => m.StaffAddress.State, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffAddress.ZipCode)
+        @Html.TextBoxFor(m => m.StaffAddress.ZipCode, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Save</button>
+}
+

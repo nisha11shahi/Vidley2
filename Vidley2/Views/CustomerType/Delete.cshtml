@@ -1,11 +1,10 @@
 ﻿
-
 @model Vidley2.ViewModels.CustomerTypeViewModel
 @{
     ViewBag.Title = "Delete Customer Type";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <h2>Are you sure you want to delete?</h2><
+    <h2>Are you sure you want to delete?</h2>
 @using (Html.BeginForm("DeleteConfirm", "CustomerType"))
 {
     @Html.HiddenFor(m => m.CustomerTypeId)

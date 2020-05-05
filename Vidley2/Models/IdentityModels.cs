@@ -30,7 +30,14 @@ namespace Vidley2.Models
 
         public DbSet<PhoneNumberType> PhoneNumberTypes { get; set; }
 
+        public DbSet<CustomerPhoneNumber> CustomerPhoneNumbers { get; set; }
 
+        public DbSet<CustomerAddress> CustomerAddress { get; set; }
+        public DbSet<CustomerMovieRental> CustomerMovieRentals { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+
+        public DbSet<StaffAddress> StaffAddresses { get; set; }
+        public DbSet<StaffPhoneNumber> StaffPhoneNumbers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

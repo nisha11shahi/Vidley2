@@ -1,0 +1,28 @@
+﻿@model Vidley2.ViewModels.StaffPhoneNumberFormViewModel
+@{
+    ViewBag.Title = "StaffAddressForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Phone Number to Staff</h2>
+
+@using (Html.BeginForm("Save", "StaffPhoneNumber"))
+{
+    @Html.HiddenFor(m => m.StaffPhoneNumber.Id)
+    @Html.HiddenFor(m => m.StaffPhoneNumber.StaffId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneNumberTypeId)
+        @Html.DropDownListFor(m => m.StaffPhoneNumber.PhoneNumberTypeId, new SelectList(Model.PhoneNumberTypes, "Id", "Type"), "Select Phone Number Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StaffPhoneNumber.PhoneNumberTypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneNumber)
+        @Html.TextBoxFor(m => m.StaffPhoneNumber.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StaffPhoneNumber.PhoneExtension)
+        @Html.TextBoxFor(m => m.StaffPhoneNumber.PhoneExtension, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Save</button>
+}

@@ -8,6 +8,7 @@ using Vidley2.ViewModels;
 
 namespace Vidley2.Controllers
 {
+    [Authorize]
     public class MoviesController : Controller
 
 

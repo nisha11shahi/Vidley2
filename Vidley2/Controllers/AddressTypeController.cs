@@ -9,6 +9,7 @@ using Vidley2.ViewModels;
 
 namespace Vidley2.Controllers
 {
+    [Authorize]
     public class AddressTypeController : Controller
     {
         private ApplicationDbContext _context;

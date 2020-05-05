@@ -1,0 +1,28 @@
+﻿@model Vidley2.ViewModels.CustomerMovieRentalViewModel
+@{
+    ViewBag.Title = "Customer Movie Rental Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Movie Rental Form</h2>
+
+@using (Html.BeginForm("Save", "CustomerMovieRental"))
+{
+    @Html.HiddenFor(m => m.CustomerMovieRental.Id)
+    @Html.HiddenFor(m => m.CustomerMovieRental.CustomerId)
+   
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Movies)
+        @Html.DropDownListFor(m => m.CustomerMovieRental.MovieId, new SelectList(Model.Movies, "Id", "Name"), "Select Movie", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Checkin)
+        @Html.TextBoxFor(m => m.CustomerMovieRental.Checkin, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerMovieRental.Checkout)
+        @Html.TextBoxFor(m => m.CustomerMovieRental.Checkout, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Save</button>
+}

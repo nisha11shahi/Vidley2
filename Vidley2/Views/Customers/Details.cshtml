@@ -11,35 +11,97 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6"><p>Name: @Model.Name</p></div>
-    <div class="col-lg-6"><p>Phone Number: @Model.PhoneNumber</p></div>
+    <div class="col-lg-6 ">Name: <span class="form-response">@Model.Name</span></div>
+    <div class="col-lg-6 "><p>Phone Number:  <span class="form-response">@Model.PhoneNumber</span></p></div>
 </div>
 
 <div class="row">
-    <div class="col-lg-6"><p>Birthdate: @Model.Birthdate</p></div>
-    <div class="col-lg-6"><p>Membership Type: @Model.MembershipType.Type</p></div>
+    <div class="col-lg-6"><p>Birthdate: <span class="form-response">@Model.Birthdate </span></p></div>
+    <div class="col-lg-6"><p>Membership Type: <span class="form-response">@Model.MembershipType.Type</span></p></div>
 </div>
-
-<div class="row label-padding">
-    <div class="col-lg-12">
-        <p>Addresses</p>
-        <p>@Model.StreetAddress</p>
-    </div>
-    <div class="col-lg-12">
-        <button type="button" class="btn btn-primary">Add new address</button>
-    </div>
-</div>
-
-<div class="row label-padding">
-    <div class="col-lg-12">
-        <p>Phone Numbers</p>
-    </div>
-    <div class="col-lg-4"> <p>Phone Number Type: @Model.PhoneNumberType.Type</p></div>
-    <div class="col-lg-4"><p>Phone Number: @Model.PhoneNumber</p></div>
-    <div class="col-lg-4"><button type="button" class="btn btn-success">Edit</button> <button type="button" class="btn btn-danger">Delete</button></div>
-    <div class="col-lg-12">
-        <button type="button" class="btn btn-primary">Add new Phone</button>
-    </div>
+<div class="row">
+    <div class="col-lg-6"><p>Signature: <img src="data:image;base64,@System.Convert.ToBase64String(Model.CustomerSignature)" /> </p></div>
+    
 </div>
 
 
+
+<div class="label-padding">
+    <div>
+        <p class=" form-response">Addresses</p>
+    </div>
+
+    @foreach (var customerAddress in Model.CustomerAddresses)
+    {
+        <div class="row row-separator">
+            <div class="col-lg-4"> <p>Address Type: @customerAddress.AddressType.Type</p></div>
+            <div class="col-lg-4">
+                <p>
+                    Address: @customerAddress.StreetAddress ,
+                    @customerAddress.Address2 , <br />
+                    @customerAddress.City ,
+                    @customerAddress.State ,
+                    @customerAddress.ZipCode
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <a href='@Url.Action("Edit", "CustomerAddress", new { id = customerAddress.Id }, null)' class="btn btn-success"> Edit  </a> <a href='@Url.Action("Delete", "CustomerAddress", new { id = customerAddress.Id }, null)' class="btn btn-danger"> Delete  </a>
+            </div>
+        </div>
+    }
+    <div class="button-area">
+        @Html.ActionLink("Add new Address", "CustomerAddressForm", "CustomerAddress", new { customerId = @Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class=" label-padding">
+    <div>
+        <p class=" form-response">Phone Numbers</p>
+    </div>
+    @foreach (var phoneNumber in Model.CustomerPhoneNumbers)
+    {
+        <div class="row row-separator">
+            <div class="col-lg-4"> <p>Phone Number Type: @phoneNumber.PhoneNumberType.Type</p></div>
+            <div class="col-lg-4"><p>Phone Number: @phoneNumber.PhoneNumber</p></div>
+            <div class="col-lg-4">
+                <a href='@Url.Action("Edit", "CustomerPhoneNumber", new { id = phoneNumber.Id }, null)' class="btn btn-success"> Edit  </a> <a href='@Url.Action("Delete", "CustomerPhoneNumber", new { id = phoneNumber.Id }, null)' class="btn btn-danger"> Delete  </a>
+            </div>
+        </div>
+    }
+    <div class="button-area">
+        @Html.ActionLink("Add new Phone", "CustomerPhoneNumberTypeForm", "CustomerPhoneNumber", new { customerId = @Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+<div class=" label-padding">
+    <div>
+        <p class=" form-response">Movie Rental</p>
+    </div>
+    @foreach (var customerMovieRental in Model.CustomerMovieRentals)
+    {
+        <div class="row row-separator">
+            <div class="col-lg-3"> <p>Movie: @customerMovieRental.Movies.Name</p></div>
+            <div class="col-lg-3"><p>Check In: @customerMovieRental.Checkin</p></div>
+            <div class="col-lg-3">
+                <p>Check Out: @(customerMovieRental.Checkout == null ? "None" : customerMovieRental.Checkout.ToString())</p>
+            </div>
+
+            <div class="col-lg-3">
+                <a href='@Url.Action("Edit", "CustomerMovieRental", new { id = customerMovieRental.Id }, null)' class="btn btn-success"> Edit  </a> <a href='@Url.Action("Delete", "CustomerMovieRental", new { id = customerMovieRental.Id }, null)' class="btn btn-danger"> Delete  </a>
+            </div>
+        </div>
+    }
+    <div class="button-area">
+        @Html.ActionLink("Add new Rental", "CustomerMovieRentalForm", "CustomerMovieRental", new { customerId = @Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/signature_pad.min.js"></script>
+    <script src="~/Scripts/SignaturePadInit.js"></script>
+}

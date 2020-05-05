@@ -13,6 +13,8 @@ namespace Vidley2.ViewModels
         public IEnumerable<PhoneNumberType> PhoneNumberTypes { get; set; }
         public Customer Customer { get; set; }
 
+        
+
 
     }
 }

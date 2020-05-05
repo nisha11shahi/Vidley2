@@ -39,8 +39,13 @@ namespace Vidley2.Models
 
         public DateTime Birthdate { get; set; }
 
-        //public ICollection<CustomerPhoneNumber> CustomerPhoneNumbers { get; set; }
-        //public ICollection<CustomerAddress> CustomerAddresses { get; set; }
-    
+        public ICollection<CustomerPhoneNumber> CustomerPhoneNumbers { get; set; }
+        public ICollection<CustomerAddress> CustomerAddresses { get; set; }
+        public ICollection<CustomerMovieRental> CustomerMovieRentals { get; set; }
+        
+        [UIHint("SignaturePad")]
+        public byte[] CustomerSignature { get; set; }
+        
+
     }
 }

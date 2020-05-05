@@ -1,0 +1,103 @@
+﻿@model Vidley2.ViewModels.StaffFormViewModel
+
+@{
+    ViewBag.Title = "Staff Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Staff.Id > 0)
+{
+    <h2>Edit Staff</h2>
+}
+else
+{
+    <h2>Add New Staff</h2>
+}
+@using (Html.BeginForm("Save", "Staff"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.FirstName, "First Name")
+                @Html.TextBoxFor(m => m.Staff.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.MiddleName, "Middle Name")
+                @Html.TextBoxFor(m => m.Staff.MiddleName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.LastName, "Last Name")
+                @Html.TextBoxFor(m => m.Staff.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.Email)
+                @Html.TextBoxFor(m => m.Staff.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.HireDate, "Hire Date")
+                @Html.TextBoxFor(m => m.Staff.HireDate, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Staff.TerminationDate, "Termination Date")
+                @Html.TextBoxFor(m => m.Staff.TerminationDate, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+         <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Staff.EmergencyContactName, "Emergency Contact Name")
+                    @Html.TextBoxFor(m => m.Staff.EmergencyContactName, new { @class = "form-control" })
+                </div>
+         </div>
+         <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Staff.EmergencyContactAddress, "Emergency Contact Address")
+                    @Html.TextBoxFor(m => m.Staff.EmergencyContactAddress, new { @class = "form-control" })
+                </div>
+         </div>
+         <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Staff.EmergencyContactPhone, "Emergency Contact Phone")
+                    @Html.TextBoxFor(m => m.Staff.EmergencyContactPhone, new { @class = "form-control" })
+                </div>
+         </div>
+    </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Staff.EmergencyContactRelationship, "Emergency Contact Relationship")
+                            @Html.TextBoxFor(m => m.Staff.EmergencyContactRelationship, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            @Html.HiddenFor(m => m.Staff.Id)
+            @Html.AntiForgeryToken()
+            <button type="submit" class=" btn btn-primary">Save</button>
+       
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
